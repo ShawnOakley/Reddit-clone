@@ -27,6 +27,8 @@ end
 
 gem 'jquery-rails'
 
+gem 'rails-pry'
+
 gem 'bcrypt-ruby', require: 'bcrypt'
 
 # To use ActiveModel has_secure_password

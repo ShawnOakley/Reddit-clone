@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130918174019) do
+ActiveRecord::Schema.define(:version => 20130918205743) do
+
+  create_table "comments", :force => true do |t|
+    t.integer  "parent_id"
+    t.integer  "link_id"
+    t.integer  "author_id"
+    t.text     "body"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "comments", ["author_id"], :name => "index_comments_on_author_id"
+  add_index "comments", ["link_id"], :name => "index_comments_on_link_id"
+  add_index "comments", ["parent_id"], :name => "index_comments_on_parent_id"
 
   create_table "link_subs", :force => true do |t|
     t.integer  "link_id",    :null => false

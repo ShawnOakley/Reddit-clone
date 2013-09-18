@@ -22,3 +22,48 @@ Sub name:
 <% if current_user.id == @link.poster_id%>
 <%= button_to "Edit this link!",  edit_link_url(@link), method: :get %>
 <% end %>
+
+<form action= '<%= link_comments_url(@link) %>' method="POST">
+
+<label>Comment on this link:
+  <textarea
+    name='comment[body]'></textarea>
+    </label>
+  </label>
+
+  <input
+  type="hidden"
+  name="authenticity_token"
+  value="<%= form_authenticity_token %>"
+  >
+
+  <input
+  type="hidden"
+  name="comment[parent_id]"
+  value=nil
+  >
+
+  <input
+  type="hidden"
+  name="comment[link_id]"
+  value= <%= @link.id %>
+  >
+
+  <input
+  type="hidden"
+  name="comment[author_id]"
+  value= <%= current_user.id %>
+  >
+
+  <input type='submit' value='Comment!'>
+
+  <% comment_hash = @link.comments_by_parent_id %>
+  <% top_level_comments = Comment.find_all_by_link_id(@link.id).select {|comment| comment_hash[comment.id] == nil } %>
+
+  <% top_level_comments.each do |comment| %>
+
+  <%= render "comments", comment: comment,  %>
+
+</form>
+
+
