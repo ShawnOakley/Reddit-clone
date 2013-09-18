@@ -1,17 +1,16 @@
 class Link < ActiveRecord::Base
-  attr_accessible :title, :url, :text
+  attr_accessible :title, :url, :text, :poster_id
 
-  belongs_to(
-  :sub,
-  class_name: "Sub",
-  foreign_key: :sub_id,
+  has_many(
+  :link_ids,
+  class_name: "LinkSub",
+  foreign_key: :link_id,
   primary_key: :id
   )
 
-  belongs_to(
-  :poster,
-  class_name: "User",
-  foreign_key: :poster_id,
-  primary_key: :id
+  has_many(
+  :joined_subs,
+  through: :link_ids,
+  source: :subs
   )
 end
