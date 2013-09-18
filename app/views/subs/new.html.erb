@@ -1,7 +1,13 @@
 <form action= '<%= subs_url %>' method="POST">
+
   <label>Name
   <input type="text" name="sub[name]"
          </label>
+
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%=form_authenticity_token%>">
 
    <!-- Five optional link fields. -->
 
@@ -83,6 +89,6 @@
             name='links[5][text]'></textarea>
             </label>
           </label>
-
-
+        </br>
+      <input type='submit' value='Create Sub'>
 </form>

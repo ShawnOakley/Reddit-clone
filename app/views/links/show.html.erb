@@ -1,0 +1,24 @@
+
+</br>
+Link title:
+<%= @link.title %>
+</br>
+Link url:
+<%= @link.url %>
+</br>
+Link text:
+<%= @link.text %>
+</br>
+
+Belongs to the following Subs:
+</br>
+<% @link.joined_sub.each do |sub| %>
+</br>
+Sub name:
+<%= sub.name %>
+</br>
+<% end %>
+
+<% if current_user.id == @link.poster_id%>
+<%= button_to "Edit this link!",  edit_link_url(@link), method: :get %>
+<% end %>

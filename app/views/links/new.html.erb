@@ -1,0 +1,40 @@
+<form action= '<%= links_url %>' method="POST">
+
+
+   </br>
+   <label> Link
+   <label>Title
+   <input type="text" name="link[title]">
+        </label>
+
+    <label>URL
+    <input type="text" name="link[url]">
+          </label>
+
+    <label>Text
+      <textarea
+        name='link[text]'></textarea>
+        </label>
+      </label>
+
+      <input
+      type="hidden"
+      name="authenticity_token"
+      value="<%= form_authenticity_token %>"
+      >
+    </br>
+    Which subs would you like to place this in?
+
+    <% Sub.all.each do |sub| %>
+    <label> <%= sub.name %>
+      <input
+        type="checkbox"
+        name="link[joined_sub_ids][]"
+        value="<%= sub.id %>"
+      </label>
+    <% end %>
+
+
+    </br>
+      <input type='submit' value='Create Link'>
+    </form>

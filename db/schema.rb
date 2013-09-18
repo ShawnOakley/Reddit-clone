@@ -13,6 +13,16 @@
 
 ActiveRecord::Schema.define(:version => 20130918174019) do
 
+  create_table "link_subs", :force => true do |t|
+    t.integer  "link_id",    :null => false
+    t.integer  "sub_id",     :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "link_subs", ["link_id"], :name => "index_link_subs_on_link_id"
+  add_index "link_subs", ["sub_id"], :name => "index_link_subs_on_sub_id"
+
   create_table "links", :force => true do |t|
     t.string   "title",      :null => false
     t.string   "url",        :null => false
@@ -25,14 +35,6 @@ ActiveRecord::Schema.define(:version => 20130918174019) do
   add_index "links", ["poster_id"], :name => "index_links_on_poster_id"
   add_index "links", ["title"], :name => "index_links_on_title"
   add_index "links", ["url"], :name => "index_links_on_url"
-
-  create_table "linksub", :force => true do |t|
-    t.integer "link_id", :null => false
-    t.integer "sub_id",  :null => false
-  end
-
-  add_index "linksub", ["link_id"], :name => "index_linksub_on_link_id"
-  add_index "linksub", ["sub_id"], :name => "index_linksub_on_sub_id"
 
   create_table "subs", :force => true do |t|
     t.string   "name",         :null => false

@@ -1,0 +1,15 @@
+<form action= '<%= sub_url(params[:id]) %>' method="post">
+  <input name= '_method' type='hidden' value='put'>
+
+  <label>Name
+  <input type="text" name="sub[name]"
+         </label>
+
+  <input
+    type="hidden"
+    name="authenticity_token"
+    value="<%=form_authenticity_token%>">
+
+    <input type='submit' value='Edit Sub Title'>
+
+</form>

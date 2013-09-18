@@ -1,5 +1,5 @@
 class Link < ActiveRecord::Base
-  attr_accessible :title, :url, :text, :poster_id
+  attr_accessible :title, :url, :text, :poster_id, :joined_sub_ids
 
   has_many(
   :link_ids,
@@ -9,7 +9,7 @@ class Link < ActiveRecord::Base
   )
 
   has_many(
-  :joined_subs,
+  :joined_sub,
   through: :link_ids,
   source: :subs
   )

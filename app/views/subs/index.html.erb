@@ -1,0 +1,21 @@
+Subs Index
+</br>
+<% Sub.all.each do |sub| %>
+Sub
+</br>
+<%= sub.name %>
+
+</br>
+<% sub.grouped_links.each do |link| %>
+</br>
+Link title:
+<%= link.title %>
+</br>
+Link url:
+<%= link.url %>
+</br>
+</br>
+
+<% end %>
+
+<% end %>
